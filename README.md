@@ -32,5 +32,5 @@ under certain conditions; type `show c' for details.
 
 
 <!-- links -->
-[GNU GPLv3 LICENSE](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[LICENSE](https://gitlab.com/Woid/WoidAndroid/-/blob/main/LICENSE)
+[GNU GPLv3 LICENSE]: https://www.gnu.org/licenses/gpl-3.0.en.html
+[LICENSE]: https://gitlab.com/Woid/WoidAndroid/-/blob/main/LICENSE
