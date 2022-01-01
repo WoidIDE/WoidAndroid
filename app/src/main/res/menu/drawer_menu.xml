@@ -5,5 +5,16 @@
         android:id="@+id/menuHome"
         android:checkable="true"
         android:checked="true"
+        android:icon="@drawable/ic_design_services"
         android:title="Home" />
+    <item
+        android:id="@+id/menuPlugins"
+        android:checkable="true"
+        android:icon="@drawable/ic_extension"
+        android:title="Plugins" />
+    <item
+        android:id="@+id/menuSettings"
+        android:checkable="true"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings" />
 </menu>

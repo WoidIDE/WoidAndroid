@@ -1,26 +1,35 @@
 package xyz.theclashfruit.woid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Toolbar toolBar;
+    private DrawerLayout drawerLayout;
+    private NavigationView drawerLayoutNavView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Toolbar toolBar = findViewById(R.id.toolBar);
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView drawerLayoutNavView =  findViewById(R.id.nav_view);
+        toolBar = findViewById(R.id.toolBar);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayoutNavView =  findViewById(R.id.nav_view);
 
         setSupportActionBar(toolBar);
 
@@ -30,6 +39,8 @@ public class HomeActivity extends AppCompatActivity {
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(HomeActivity.this, drawerLayout, toolBar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+
+        drawerLayoutNavView.setNavigationItemSelectedListener(this);
 
         if(savedInstanceState == null) {
             getSupportActionBar().setSubtitle("Projects");
@@ -41,7 +52,44 @@ public class HomeActivity extends AppCompatActivity {
             fragmentTransaction.replace(R.id.fragmentContainer, homeFragment);
             fragmentTransaction.commit();
         }
+    }
 
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        FragmentManager drawerFragmentManager = getSupportFragmentManager();
+        FragmentTransaction drawerFragmentTransaction = drawerFragmentManager.beginTransaction();
 
+        switch (item.getItemId()) {
+            case R.id.menuHome:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                drawerLayoutNavView.setCheckedItem(R.id.menuHome);
+                getSupportActionBar().setSubtitle("Projects");
+
+                HomeFragment homeFragment = HomeFragment.newInstance();
+
+                drawerFragmentTransaction.replace(R.id.fragmentContainer, homeFragment);
+                drawerFragmentTransaction.commit();
+
+                break;
+            case R.id.menuPlugins:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                drawerLayoutNavView.setCheckedItem(R.id.menuPlugins);
+                getSupportActionBar().setSubtitle("Plugins");
+
+                PluginsFragment pluginsFragment = PluginsFragment.newInstance();
+
+                drawerFragmentTransaction.replace(R.id.fragmentContainer, pluginsFragment);
+                drawerFragmentTransaction.commit();
+
+                break;
+            case R.id.menuSettings:
+                drawerLayout.closeDrawer(GravityCompat.START);
+                drawerLayoutNavView.setCheckedItem(R.id.menuSettings);
+
+                break;
+        }
+
+        return false;
     }
 }
