@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Woid</string>
+    <string name="version">b1.0</string>
 </resources>
