@@ -4,6 +4,12 @@ Woid is a cross-platform Android IDE for both Android and Desktop.
 
 Woid aims to be a fully fledged IDE with gradle support, auto completion.
 
+## Compiling
+
+You can just clone the repository and open it in Android Studio and clicking run.
+
+Cloning the repository: `git clone https://gitlab.com/Woid/WoidAndroid.git`
+
 ## Contributing
 
 Here you can see a guide on contributing to Woid.
