@@ -10,7 +10,7 @@
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <item name="colorOnSecondary">@color/colorOnAccent</item>
         <item name="colorOnBackground">@color/colorOnBackground</item>
-        <item name="backgroundColor">@color/colorBackgroundDark</item>
+        <item name="backgroundColor">@color/colorBackground</item>
     </style>
 
     <style name="WoidTheme.FullScreen" parent="WoidTheme">
