@@ -10,24 +10,23 @@ import android.view.ViewGroup;
 
 
 public class HomeFragment extends Fragment {
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+  public HomeFragment() {
+    // Required empty public constructor
+  }
 
-    public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
-        return fragment;
-    }
+  public static HomeFragment newInstance() {
+    return new HomeFragment();
+  }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+  }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View viewInflater = inflater.inflate(R.layout.fragment_home, container, false);
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    View viewInflater = inflater.inflate(R.layout.fragment_home, container, false);
 
-        return viewInflater;
-    }
+    return viewInflater;
+  }
 }

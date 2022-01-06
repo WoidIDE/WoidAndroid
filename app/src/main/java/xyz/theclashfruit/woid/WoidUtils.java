@@ -6,13 +6,13 @@ import android.widget.Toast;
 // WoidUtils is just there to make some codes easier to remember and write, and also to make the code cleaner.
 
 public class WoidUtils {
-    public boolean GenerateLogFile() {
-        // TODO: to be implemented.
+  public boolean GenerateLogFile() {
+    // TODO: to be implemented.
 
-        return true;
-    }
+    return true;
+  }
 
-    public void showToast(Context context, String text) {
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
-    }
+  public void showToast(Context context, String text) {
+    Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+  }
 }

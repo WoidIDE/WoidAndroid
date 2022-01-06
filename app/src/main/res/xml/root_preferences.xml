@@ -1,0 +1,28 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <PreferenceCategory android:title="Git Integration">
+
+    <SwitchPreference
+      android:defaultValue="false"
+      android:key="switch_preference_1"
+      android:title="Enable Git Integration" />
+  </PreferenceCategory>
+  <PreferenceCategory android:title="Settings Sync">
+
+    <CheckBoxPreference
+      android:defaultValue="false"
+      android:key="check_box_preference_1"
+      android:title="Enable Settings Sync" />
+    <MultiSelectListPreference
+      android:entries="@array/reply_entries"
+      android:entryValues="@array/reply_values"
+      android:key="multi_select_list_preference_1"
+      android:title="Sync Options" />
+  </PreferenceCategory>
+  <PreferenceCategory android:title="Debug">
+
+  </PreferenceCategory>
+  <Preference
+    android:key="app_crash"
+    android:title="Crash App" />
+</PreferenceScreen>

@@ -10,24 +10,23 @@ import android.view.ViewGroup;
 
 
 public class PluginsFragment extends Fragment {
-    public PluginsFragment() {
-        // Required empty public constructor
-    }
+  public PluginsFragment() {
+    // Required empty public constructor
+  }
 
-    public static PluginsFragment newInstance() {
-        PluginsFragment fragment = new PluginsFragment();
-        return fragment;
-    }
+  public static PluginsFragment newInstance() {
+    return new PluginsFragment();
+  }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+  }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View viewInflater = inflater.inflate(R.layout.fragment_plugins, container, false);
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    View viewInflater = inflater.inflate(R.layout.fragment_plugins, container, false);
 
-        return viewInflater;
-    }
+    return viewInflater;
+  }
 }

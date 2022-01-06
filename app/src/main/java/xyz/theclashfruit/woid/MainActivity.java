@@ -16,26 +16,26 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
 
-        Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.parseColor("#14181f"));
+    Window window = getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setNavigationBarColor(Color.parseColor("#14181f"));
 
-        Handler handle = new Handler();
+    Handler handle = new Handler();
 
-        new Timer().schedule(new TimerTask() {
-            public void run() {
-                handle.post(new Runnable() {
-                    public void run() {
-                        Intent i1 = new Intent(getApplicationContext(), HomeActivity.class);
-                        startActivity(i1);
-                    }
-                });
-            }
-        }, 1500);
-    }
+    new Timer().schedule(new TimerTask() {
+      public void run() {
+        handle.post(new Runnable() {
+          public void run() {
+            Intent i1 = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(i1);
+          }
+        });
+      }
+    }, 1500);
+  }
 }
