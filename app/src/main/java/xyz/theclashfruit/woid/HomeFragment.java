@@ -1,18 +1,24 @@
 package xyz.theclashfruit.woid;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
@@ -21,6 +27,7 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -38,21 +45,30 @@ public class HomeFragment extends Fragment {
     super.onCreate(savedInstanceState);
   }
 
+  @SuppressLint("NotifyDataSetChanged")
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View viewInflater       = inflater.inflate(R.layout.fragment_home, container, false);
     View dialogViewInflater = inflater.inflate(R.layout.create_project_dialog, null);
 
     FloatingActionButton newProjectFab = viewInflater.findViewById(R.id.newProject);
-    ListView projectList               = viewInflater.findViewById(R.id.projectList);
+    RecyclerView projectList           = viewInflater.findViewById(R.id.projectList);
 
     TextView appName                  = dialogViewInflater.findViewById(R.id.app_name);
     TextView appPackage               = dialogViewInflater.findViewById(R.id.app_package);
     AutoCompleteTextView appMinSdk    = dialogViewInflater.findViewById(R.id.min_sdk);
     AutoCompleteTextView appTargetSdk = dialogViewInflater.findViewById(R.id.target_sdk);
 
-    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.list_item);
+    ArrayList<String> projectListString = new ArrayList<String>();
 
+    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+
+    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+    ProjectListAdapter adapter = new ProjectListAdapter(projectListString);
+
+    projectList.setHasFixedSize(true);
+    projectList.setLayoutManager(linearLayoutManager);
     projectList.setAdapter(adapter);
     appMinSdk.setAdapter(sdkAdapter());
     appTargetSdk.setAdapter(sdkAdapter());
@@ -87,7 +103,7 @@ public class HomeFragment extends Fragment {
 
     for (File file : fileList) {
       Log.w("Files", "FileName: " + file.getAbsolutePath());
-      adapter.add(file.getAbsolutePath());
+      projectListString.add(file.getAbsolutePath());
       adapter.notifyDataSetChanged();
     }
 

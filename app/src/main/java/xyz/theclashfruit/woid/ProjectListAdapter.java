@@ -7,24 +7,31 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+
+import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.ViewHolder> {
 
-  private String[] localDataSet;
+  private ArrayList<String> localDataSet;
 
   public static class ViewHolder extends RecyclerView.ViewHolder {
-    private final TextView textView;
+    public final TextView textView;
+    public final TextView textView2;
 
     public ViewHolder(View view) {
       super(view);
-      textView = (TextView) view.findViewById(R.id.textView);
-    }
 
-    public TextView getTextView() {
-      return textView;
+      textView = view.findViewById(R.id.textView3);
+      textView2 = view.findViewById(R.id.textView5);
     }
   }
 
-  public ProjectListAdapter(String[] dataSet) {
+  public ProjectListAdapter(ArrayList<String> dataSet) {
     localDataSet = dataSet;
   }
 
@@ -38,12 +45,21 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
 
   @Override
   public void onBindViewHolder(ProjectListAdapter.ViewHolder viewHolder, final int position) {
-    viewHolder.getTextView().setText(localDataSet[position]);
+    try {
+      Gson gson = new Gson();
+
+      ProjectMetaGson projectMeta = gson.fromJson(StorageUtil.readFile(localDataSet.get(position) + "/meta.json"), ProjectMetaGson.class);
+
+      viewHolder.textView.setText(projectMeta.getProjectName());
+      viewHolder.textView2.setText(projectMeta.getPackageName());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
   public int getItemCount() {
-    return localDataSet.length;
+    return localDataSet.size();
   }
 }
 

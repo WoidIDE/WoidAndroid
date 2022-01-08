@@ -1,13 +1,17 @@
 package xyz.theclashfruit.woid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.SimpleAdapter;
@@ -32,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
 
     if(!StorageUtil.isDirectoryExists(getFilesDir().getPath() + "/plugins"))
       StorageUtil.createDirectory(getFilesDir().getPath() + "/plugins");
+
+    SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("xyz.theclashfruit.woid_preferences", Context.MODE_PRIVATE);
+
+    if(sharedPref.getBoolean("dark_mode", false))
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    else
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
     Handler handle = new Handler();
 

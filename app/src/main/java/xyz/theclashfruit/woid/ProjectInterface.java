@@ -9,7 +9,7 @@ import java.io.File;
 
 public class ProjectInterface {
   public static boolean generateNewProject(Context context, String projectName, String packageName, String minSdk, String targetSdk) {
-    if(!StorageUtil.isFileExist(context.getFilesDir().getPath() + "/projects/" + projectName.replaceAll("\\s+","") + "/meta.json"))
+    if(!StorageUtil.isFileExist(context.getFilesDir().getPath() + "/projects/" + projectName.replaceAll("\\s+","") + "/meta.json") && !projectName.equals(""))
       StorageUtil.createDirectory(context.getFilesDir().getPath() + "/projects/" + projectName.replaceAll("\\s+",""));
     else
       return false;
