@@ -57,10 +57,17 @@ public class EditorActivity extends AppCompatActivity {
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu){
+    menu.add("Compile")
+            .setIcon(R.drawable.ic_play_arrow)
+            .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     menu.add("Save")
             .setIcon(R.drawable.ic_save)
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     menu.add("Import Files")
+            .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+    menu.add("Export Project")
+            .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+    menu.add("Logs")
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
     return true;
   }

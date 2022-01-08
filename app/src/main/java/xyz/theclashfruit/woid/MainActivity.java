@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.SimpleAdapter;
 import android.widget.Toolbar;
 
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -24,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
     Window window = getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
     window.setNavigationBarColor(Color.parseColor("#14181f"));
+
+    if(!StorageUtil.isDirectoryExists(getFilesDir().getPath() + "/projects"))
+      StorageUtil.createDirectory(getFilesDir().getPath() + "/projects");
+
+    if(!StorageUtil.isDirectoryExists(getFilesDir().getPath() + "/plugins"))
+      StorageUtil.createDirectory(getFilesDir().getPath() + "/plugins");
 
     Handler handle = new Handler();
 

@@ -12,7 +12,7 @@ public class WoidUtils {
     return true;
   }
 
-  public void showToast(Context context, String text) {
+  public static void showToast(Context context, String text) {
     Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
   }
 }
