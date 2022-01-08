@@ -1,17 +1,24 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto">
+  <PreferenceCategory android:title="Display">
+
+    <SwitchPreference
+      android:defaultValue="false"
+      android:key="dark_mode"
+      android:title="Dark Mode" />
+  </PreferenceCategory>
   <PreferenceCategory android:title="Git Integration">
 
     <SwitchPreference
       android:defaultValue="false"
       android:key="switch_preference_1"
-      android:title="Enable Git Integration" />
+      android:title="@string/preferencesGitTitle" />
   </PreferenceCategory>
-  <PreferenceCategory android:title="Settings Sync">
+  <PreferenceCategory android:title="@string/preferencesSettingsSyncTitle">
 
-    <CheckBoxPreference
+    <SwitchPreference
       android:defaultValue="false"
-      android:key="check_box_preference_1"
+      android:key="switch_preference_2"
       android:title="Enable Settings Sync" />
     <MultiSelectListPreference
       android:entries="@array/reply_entries"
@@ -19,10 +26,34 @@
       android:key="multi_select_list_preference_1"
       android:title="Sync Options" />
   </PreferenceCategory>
-  <PreferenceCategory android:title="Debug">
+  <PreferenceCategory android:title="Editor">
 
+    <SwitchPreference
+      android:defaultValue="true"
+      android:key="auto_indentation"
+      android:title="Auto Indentation" />
+    <SwitchPreference
+      android:defaultValue="true"
+      android:key="auto_complete"
+      android:title="Auto Complete" />
+    <SwitchPreference
+      android:defaultValue="false"
+      android:key="line_wrapping"
+      android:title="Line Wrappping" />
+    <ListPreference
+      android:defaultValue="1"
+      android:entries="@array/reply_entries"
+      android:entryValues="@array/reply_values"
+      android:key="list_preference_1"
+      android:title="Theme" />
   </PreferenceCategory>
-  <Preference
-    android:key="app_crash"
-    android:title="Crash App" />
+  <PreferenceCategory android:title="@string/preferencesDebugTitle">
+    <Preference
+      android:key="app_crash"
+      android:title="Crash App" />
+    <Preference
+      android:key="build_name"
+      android:title="Build"
+      android:summary="@string/buildName" />
+  </PreferenceCategory>
 </PreferenceScreen>

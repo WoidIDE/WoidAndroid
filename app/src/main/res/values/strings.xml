@@ -1,6 +1,7 @@
 <resources>
   <string name="app_name">Woid</string>
-  <string name="version">b1.0</string>
+  <string name="version">a1.0</string>
+  <string name="buildName">a1.0-512cb594e4f09a7c11aef05a8dbac2b3</string>
   <string name="new_project">New Project</string>
   <!-- Preference Titles -->
   <string name="messages_header">Messages</string>
@@ -16,4 +17,10 @@
   <string name="attachment_summary_on">Automatically download attachments for incoming emails
   </string>
   <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+  <string name="preferencesGitTitle">Enable Git Integration</string>
+  <string name="preferencesSettingsSyncTitle">Settings Sync</string>
+  <string name="preferencesDebugTitle">Debug</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

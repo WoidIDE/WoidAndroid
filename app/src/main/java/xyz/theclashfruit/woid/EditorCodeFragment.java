@@ -11,14 +11,17 @@ import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import io.github.rosemoe.sora.langs.java.JavaLanguage;
+import io.github.rosemoe.sora.widget.CodeEditor;
 
-public class HomeFragment extends Fragment {
-  public HomeFragment() {
+
+public class EditorCodeFragment extends Fragment {
+  public EditorCodeFragment() {
     // Required empty public constructor
   }
 
-  public static HomeFragment newInstance() {
-    return new HomeFragment();
+  public static EditorCodeFragment newInstance() {
+    return new EditorCodeFragment();
   }
 
   @Override
@@ -28,17 +31,10 @@ public class HomeFragment extends Fragment {
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    View viewInflater = inflater.inflate(R.layout.fragment_home, container, false);
+    View viewInflater = inflater.inflate(R.layout.fragment_editor_code, container, false);
 
-    FloatingActionButton newProjectFab = viewInflater.findViewById(R.id.newProject);
-
-    newProjectFab.setOnClickListener(v -> {
-      Intent i1 = new Intent();
-
-      i1.setClass(getActivity(), EditorActivity.class);
-      startActivity(i1);
-      getActivity().finish();
-    });
+    CodeEditor editor = (CodeEditor) viewInflater.findViewById(R.id.code_editor);
+    editor.setEditorLanguage(new JavaLanguage());
 
     return viewInflater;
   }

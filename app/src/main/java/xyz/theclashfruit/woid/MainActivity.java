@@ -29,11 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     new Timer().schedule(new TimerTask() {
       public void run() {
-        handle.post(new Runnable() {
-          public void run() {
-            Intent i1 = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(i1);
-          }
+        handle.post(() -> {
+          Intent i1 = new Intent(getApplicationContext(), HomeActivity.class);
+          startActivity(i1);
+          finish();
         });
       }
     }, 1500);
