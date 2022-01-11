@@ -52,6 +52,9 @@
       android:key="app_crash"
       android:title="Crash App" />
     <Preference
+      android:key="projects_delete"
+      android:title="Delete All Projects" />
+    <Preference
       android:key="build_name"
       android:title="Build"
       android:summary="@string/buildName" />

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.appcompat.widget.Toolbar;
@@ -15,6 +16,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.IOException;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -51,6 +56,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
       fragmentTransaction.replace(R.id.fragmentContainer, homeFragment);
       fragmentTransaction.commit();
+
+      try {
+        String[] files = getAssets().list("AndroidPreGeneratorFiles");
+
+        Gson gson = new GsonBuilder().create();
+        String jsonArray = gson.toJson(files);
+        Log.d("asd", jsonArray);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
     }
   }
 

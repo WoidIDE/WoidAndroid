@@ -10,9 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
+
+import java.io.IOException;
 
 import io.github.rosemoe.sora.langs.java.JavaLanguage;
 import io.github.rosemoe.sora.widget.CodeEditor;
+import io.github.rosemoe.sora.widget.EditorColorScheme;
 
 
 public class EditorCodeFragment extends Fragment {
@@ -35,6 +39,15 @@ public class EditorCodeFragment extends Fragment {
 
     CodeEditor editor = (CodeEditor) viewInflater.findViewById(R.id.code_editor);
     editor.setEditorLanguage(new JavaLanguage());
+
+    Gson gson = new Gson();
+    ProjectMetaGson projectMeta = null;
+    try {
+      projectMeta = gson.fromJson(StorageUtil.readFile(getActivity().getIntent().getStringExtra("projectPath") + "/meta.json"), ProjectMetaGson.class);
+      editor.setText(StorageUtil.readFile(getActivity().getIntent().getStringExtra("projectPath") + "/android/app/src/main/java/" + projectMeta.getPackageName().replaceAll("\\.","/") + "/MainActivity.java"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
 
     return viewInflater;
   }

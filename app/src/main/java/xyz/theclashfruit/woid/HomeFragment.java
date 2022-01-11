@@ -65,7 +65,14 @@ public class HomeFragment extends Fragment {
 
     linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-    ProjectListAdapter adapter = new ProjectListAdapter(projectListString);
+    ProjectListAdapter adapter = new ProjectListAdapter(projectListString, item -> {
+      Intent i1 = new Intent(getContext(), EditorActivity.class);
+
+      i1.putExtra("projectPath", item);
+
+      startActivity(i1);
+      getActivity().finish();
+    });
 
     projectList.setHasFixedSize(true);
     projectList.setLayoutManager(linearLayoutManager);
@@ -84,8 +91,7 @@ public class HomeFragment extends Fragment {
 
           Intent i1 = new Intent(getContext(), EditorActivity.class);
 
-          i1.putExtra("projectPath", getActivity().getApplicationContext().getFilesDir() + "/projects/" + appName.getText().toString().replaceAll("\\s+","") + "/android");
-          i1.putExtra("projectName", appName.getText().toString());
+          i1.putExtra("projectPath", getActivity().getApplicationContext().getFilesDir() + "/projects/" + appName.getText().toString().replaceAll("\\s+",""));
 
           startActivity(i1);
           getActivity().finish();

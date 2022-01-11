@@ -8,11 +8,16 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
+
+import java.io.IOException;
 
 public class EditorActivity extends AppCompatActivity {
 
@@ -33,6 +38,18 @@ public class EditorActivity extends AppCompatActivity {
 
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeButtonEnabled(true);
+
+    Intent intent = getIntent();
+
+    Gson gson = new Gson();
+
+    try {
+      ProjectMetaGson projectMeta = gson.fromJson(StorageUtil.readFile(intent.getStringExtra("projectPath") + "/meta.json"), ProjectMetaGson.class);
+
+      getSupportActionBar().setSubtitle(projectMeta.getProjectName().replaceAll("\\s+",""));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
 
     viewPager.setAdapter(new FragmentAdapter(getApplicationContext(), getSupportFragmentManager(), 3));
     tabLayout.setupWithViewPager(viewPager);
