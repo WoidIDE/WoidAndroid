@@ -1,13 +1,9 @@
 package xyz.theclashfruit.woid;
 
 import android.content.Context;
-import android.os.Environment;
 import android.util.Log;
 
 import com.google.gson.Gson;
-
-import java.io.File;
-import java.util.regex.Pattern;
 
 public class ProjectInterface {
   public static boolean generateNewProject(Context context, String projectName, String packageName, String minSdk, String targetSdk) {
@@ -40,7 +36,7 @@ public class ProjectInterface {
     }
   }
 
-  private static boolean generateAndroidFiles(Context context, String path, String projectName, String packageName) {
+  private static void generateAndroidFiles(Context context, String path, String projectName, String packageName) {
     String formattedPackageName = packageName.replaceAll("\\.","/");
 
     Log.d("pkg", formattedPackageName);
@@ -70,7 +66,5 @@ public class ProjectInterface {
             "  }\n" +
             "}");
      */
-
-    return true;
   }
 }

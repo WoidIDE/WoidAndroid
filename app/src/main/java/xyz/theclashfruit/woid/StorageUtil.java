@@ -105,7 +105,7 @@ public class StorageUtil {
                 new BufferedReader(new InputStreamReader(in));
         String strLine;
         while ((strLine = br.readLine()) != null) {
-            output.append(strLine);
+            output.append(strLine + "\n");
         }
         in.close();
         return output.toString();
