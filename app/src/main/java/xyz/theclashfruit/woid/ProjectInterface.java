@@ -32,7 +32,7 @@ public class ProjectInterface {
 
       StorageUtil.createFile(context.getFilesDir().getPath() + "/projects/" + projectName.replaceAll("\\s+","") + "/meta.json", json);
 
-      generateAndroidFiles(context.getFilesDir().getPath() + "/projects/" + projectName.replaceAll("\\s+","") + "/android", projectName, packageName);
+      generateAndroidFiles(context, context.getFilesDir().getPath() + "/projects/" + projectName.replaceAll("\\s+","") + "/android", projectName, packageName);
 
       return true;
     } catch (Exception e) {
@@ -40,11 +40,20 @@ public class ProjectInterface {
     }
   }
 
-  private static boolean generateAndroidFiles(String path, String projectName, String packageName) {
+  private static boolean generateAndroidFiles(Context context, String path, String projectName, String packageName) {
     String formattedPackageName = packageName.replaceAll("\\.","/");
 
     Log.d("pkg", formattedPackageName);
 
+    ProjectFileGeneratorUtils.unzipFromAssets(context, "AndroidTemplate.zip", path);
+
+    StorageUtil.createDirectory(path + "/app/src/main/java/" + formattedPackageName);
+    StorageUtil.move(path + "/app/src/main/java/$packagename/MainActivity.java", path + "/app/src/main/java/" + formattedPackageName + "/MainActivity.java");
+    StorageUtil.deleteDirectory(path + "/app/src/main/java/$packagename");
+
+
+
+    /*
     StorageUtil.createDirectory(path + "/app/src/main/java/" + formattedPackageName);
     StorageUtil.createFile(path + "/app/src/main/java/" + formattedPackageName + "/MainActivity.java", "package " + packageName + ";\n" +
             "\n" +
@@ -60,6 +69,7 @@ public class ProjectInterface {
             "    setContentView(R.layout.activity_main);\n" +
             "  }\n" +
             "}");
+     */
 
     return true;
   }
