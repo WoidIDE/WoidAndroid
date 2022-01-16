@@ -43,8 +43,6 @@ public class ProjectInterface {
   private static void generateAndroidFiles(Context context, String path, String projectName, ProjectMetaGson metaJson) throws IOException {
     String formattedPackageName = metaJson.getPackageName().replaceAll("\\.","/");
 
-    Log.d("pkg", formattedPackageName);
-
     ProjectFileGeneratorUtils.unzipFromAssets(context, "AndroidTemplate.zip", path);
 
     StorageUtil.createDirectory(path + "/app/src/main/java/" + formattedPackageName);
@@ -59,11 +57,7 @@ public class ProjectInterface {
     filesToReplaceIn.add("/app/src/main/java/" + formattedPackageName + "/MainActivity.java");
 
     for (String file : filesToReplaceIn) {
-      Log.e("Error", path + file);
-
       String currentFileRead = StorageUtil.readFile(path + file);
-
-      Log.e("Error", currentFileRead);
 
       try {
         currentFileRead = currentFileRead.replaceAll("\\$packagename", metaJson.getPackageName());
@@ -71,31 +65,11 @@ public class ProjectInterface {
         currentFileRead = currentFileRead.replaceAll("\\$\\{targetSdkVersion\\}", metaJson.getTargetSdk().toString());
         currentFileRead = currentFileRead.replaceAll("\\$appname", projectName);
       } catch (Exception e) {
-
+        Log.e("Error", e.toString());
       }
-
-      Log.e("Error", currentFileRead);
 
       StorageUtil.deleteFile(path + file);
       StorageUtil.createFile(path + file, currentFileRead);
     }
-
-    /*
-    StorageUtil.createDirectory(path + "/app/src/main/java/" + formattedPackageName);
-    StorageUtil.createFile(path + "/app/src/main/java/" + formattedPackageName + "/MainActivity.java", "package " + packageName + ";\n" +
-            "\n" +
-            "import androidx.appcompat.app.AppCompatActivity;\n" +
-            "\n" +
-            "import android.os.Bundle;\n" +
-            "\n" +
-            "public class MainActivity extends AppCompatActivity {\n" +
-            "\n" +
-            "  @Override\n" +
-            "  protected void onCreate(Bundle savedInstanceState) {\n" +
-            "    super.onCreate(savedInstanceState);\n" +
-            "    setContentView(R.layout.activity_main);\n" +
-            "  }\n" +
-            "}");
-     */
   }
 }

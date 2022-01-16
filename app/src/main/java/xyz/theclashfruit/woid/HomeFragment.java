@@ -108,7 +108,6 @@ public class HomeFragment extends Fragment {
     List<File> fileList = StorageUtil.getFiles(getActivity().getApplicationContext().getFilesDir() + "/projects");
 
     for (File file : fileList) {
-      Log.w("Files", "FileName: " + file.getAbsolutePath());
       projectListString.add(file.getAbsolutePath());
       adapter.notifyDataSetChanged();
     }
