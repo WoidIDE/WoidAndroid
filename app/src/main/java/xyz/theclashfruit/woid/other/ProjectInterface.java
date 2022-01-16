@@ -1,4 +1,4 @@
-package xyz.theclashfruit.woid;
+package xyz.theclashfruit.woid.other;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,8 +6,11 @@ import android.util.Log;
 import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import xyz.theclashfruit.woid.utils.ProjectFileGeneratorUtils;
+import xyz.theclashfruit.woid.gson.ProjectMetaGson;
+import xyz.theclashfruit.woid.utils.StorageUtil;
 
 public class ProjectInterface {
   public static boolean generateNewProject(Context context, String projectName, String packageName, String minSdk, String targetSdk) {

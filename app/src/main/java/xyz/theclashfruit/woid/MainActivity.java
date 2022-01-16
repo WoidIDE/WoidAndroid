@@ -7,19 +7,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.SimpleAdapter;
-import android.widget.Toolbar;
 
-import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import xyz.theclashfruit.woid.utils.StorageUtil;
 
 public class MainActivity extends AppCompatActivity {
   @Override

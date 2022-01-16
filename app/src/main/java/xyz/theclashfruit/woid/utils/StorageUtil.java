@@ -1,4 +1,4 @@
-package xyz.theclashfruit.woid;
+package xyz.theclashfruit.woid.utils;
 
 import android.graphics.Bitmap;
 import android.os.Environment;

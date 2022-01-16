@@ -1,4 +1,4 @@
-package xyz.theclashfruit.woid;
+package xyz.theclashfruit.woid.other;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+
+import xyz.theclashfruit.woid.gson.ProjectMetaGson;
+import xyz.theclashfruit.woid.R;
+import xyz.theclashfruit.woid.utils.StorageUtil;
 
 public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.ViewHolder> {
 
@@ -70,9 +71,5 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
   public int getItemCount() {
     return localDataSet.size();
   }
-}
-
-interface OnItemClickListener {
-  void onItemClick(String item);
 }
 

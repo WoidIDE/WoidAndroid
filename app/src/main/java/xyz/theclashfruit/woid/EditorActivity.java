@@ -10,7 +10,6 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -20,6 +19,12 @@ import com.google.gson.Gson;
 import java.io.IOException;
 
 import io.github.rosemoe.sora.widget.CodeEditor;
+import xyz.theclashfruit.woid.fragments.EditorCodeFragment;
+import xyz.theclashfruit.woid.fragments.EditorFilesFragment;
+import xyz.theclashfruit.woid.fragments.EditorLayoutFragment;
+import xyz.theclashfruit.woid.gson.ProjectMetaGson;
+import xyz.theclashfruit.woid.utils.StorageUtil;
+import xyz.theclashfruit.woid.utils.WoidUtils;
 
 public class EditorActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package xyz.theclashfruit.woid;
+package xyz.theclashfruit.woid.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

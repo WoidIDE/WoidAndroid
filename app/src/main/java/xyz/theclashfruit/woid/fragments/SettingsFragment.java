@@ -1,9 +1,12 @@
-package xyz.theclashfruit.woid;
+package xyz.theclashfruit.woid.fragments;
 
 import android.os.Bundle;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+
+import xyz.theclashfruit.woid.R;
+import xyz.theclashfruit.woid.utils.StorageUtil;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 

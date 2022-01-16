@@ -1,4 +1,4 @@
-package xyz.theclashfruit.woid;
+package xyz.theclashfruit.woid.gson;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

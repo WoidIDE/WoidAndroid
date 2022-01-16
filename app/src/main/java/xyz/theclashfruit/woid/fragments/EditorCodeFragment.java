@@ -1,26 +1,22 @@
-package xyz.theclashfruit.woid;
+package xyz.theclashfruit.woid.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 
 import io.github.rosemoe.sora.langs.java.JavaLanguage;
 import io.github.rosemoe.sora.widget.CodeEditor;
-import io.github.rosemoe.sora.widget.EditorColorScheme;
+import xyz.theclashfruit.woid.R;
+import xyz.theclashfruit.woid.utils.StorageUtil;
 
 public class EditorCodeFragment extends Fragment {
-  String currentFile;
+  public String currentFile;
 
   public EditorCodeFragment() {
     // Required empty public constructor

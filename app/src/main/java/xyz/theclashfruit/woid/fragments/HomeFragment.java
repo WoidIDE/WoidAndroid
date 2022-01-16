@@ -1,27 +1,19 @@
-package xyz.theclashfruit.woid;
+package xyz.theclashfruit.woid.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,6 +21,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import xyz.theclashfruit.woid.EditorActivity;
+import xyz.theclashfruit.woid.R;
+import xyz.theclashfruit.woid.other.ProjectInterface;
+import xyz.theclashfruit.woid.other.ProjectListAdapter;
+import xyz.theclashfruit.woid.utils.StorageUtil;
+import xyz.theclashfruit.woid.utils.WoidUtils;
 
 
 public class HomeFragment extends Fragment {

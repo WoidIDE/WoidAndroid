@@ -21,6 +21,10 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
+import xyz.theclashfruit.woid.fragments.HomeFragment;
+import xyz.theclashfruit.woid.fragments.PluginsFragment;
+import xyz.theclashfruit.woid.fragments.SettingsFragment;
+
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
   private Toolbar toolBar;

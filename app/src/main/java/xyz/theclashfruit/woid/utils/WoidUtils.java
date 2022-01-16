@@ -1,4 +1,4 @@
-package xyz.theclashfruit.woid;
+package xyz.theclashfruit.woid.utils;
 
 import android.content.Context;
 import android.widget.Toast;

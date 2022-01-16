@@ -5,7 +5,7 @@
   android:layout_height="match_parent"
   android:gravity="center"
   android:orientation="horizontal"
-  tools:context=".EditorLayoutFragment">
+  tools:context=".fragments.EditorLayoutFragment">
 
   <TextView
     android:id="@+id/textView4"
