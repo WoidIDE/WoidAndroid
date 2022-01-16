@@ -18,3 +18,8 @@ Please do try to follow the committing style if you want to contribute, it makes
 ## Pull Request
 
 Make sure that your pull request is described correctly.
+
+## Branches
+
+dev: For development, please use this branch when contributing.
+main: Production branch.
