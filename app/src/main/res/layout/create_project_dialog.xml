@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
-    android:hint="App Name">
+    android:hint="@string/new_project_app_name">
 
     <com.google.android.material.textfield.TextInputEditText
       android:layout_width="match_parent"
@@ -28,7 +28,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
-    android:hint="Package Name">
+    android:hint="@string/new_project_package_name">
 
     <com.google.android.material.textfield.TextInputEditText
       android:layout_width="match_parent"
@@ -43,7 +43,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
-    android:hint="Min SDK">
+    android:hint="@string/new_project_min_sdk">
 
     <AutoCompleteTextView
       android:id="@+id/min_sdk"
@@ -59,7 +59,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
-    android:hint="Target SDK">
+    android:hint="@string/new_project_target_sdk">
 
     <AutoCompleteTextView
       android:id="@+id/target_sdk"
