@@ -5,6 +5,10 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class ProjectInterface {
   public static boolean generateNewProject(Context context, String projectName, String packageName, String minSdk, String targetSdk) {
     if(!StorageUtil.isFileExist(context.getFilesDir().getPath() + "/projects/" + projectName.replaceAll("\\s+","") + "/meta.json") && !projectName.equals(""))
@@ -28,7 +32,7 @@ public class ProjectInterface {
 
       StorageUtil.createFile(context.getFilesDir().getPath() + "/projects/" + projectName.replaceAll("\\s+","") + "/meta.json", json);
 
-      generateAndroidFiles(context, context.getFilesDir().getPath() + "/projects/" + projectName.replaceAll("\\s+","") + "/android", projectName, packageName);
+      generateAndroidFiles(context, context.getFilesDir().getPath() + "/projects/" + projectName.replaceAll("\\s+","") + "/android", projectName, metaJson);
 
       return true;
     } catch (Exception e) {
@@ -36,8 +40,8 @@ public class ProjectInterface {
     }
   }
 
-  private static void generateAndroidFiles(Context context, String path, String projectName, String packageName) {
-    String formattedPackageName = packageName.replaceAll("\\.","/");
+  private static void generateAndroidFiles(Context context, String path, String projectName, ProjectMetaGson metaJson) throws IOException {
+    String formattedPackageName = metaJson.getPackageName().replaceAll("\\.","/");
 
     Log.d("pkg", formattedPackageName);
 
@@ -47,7 +51,34 @@ public class ProjectInterface {
     StorageUtil.move(path + "/app/src/main/java/$packagename/MainActivity.java", path + "/app/src/main/java/" + formattedPackageName + "/MainActivity.java");
     StorageUtil.deleteDirectory(path + "/app/src/main/java/$packagename");
 
+    ArrayList<String> filesToReplaceIn = new ArrayList<String>();
 
+    filesToReplaceIn.add("/settings.gradle");
+    filesToReplaceIn.add("/app/build.gradle");
+    filesToReplaceIn.add("/app/src/main/AndroidManifest.xml");
+    filesToReplaceIn.add("/app/src/main/java/" + formattedPackageName + "/MainActivity.java");
+
+    for (String file : filesToReplaceIn) {
+      Log.e("Error", path + file);
+
+      String currentFileRead = StorageUtil.readFile(path + file);
+
+      Log.e("Error", currentFileRead);
+
+      try {
+        currentFileRead = currentFileRead.replaceAll("\\$packagename", metaJson.getPackageName());
+        currentFileRead = currentFileRead.replaceAll("\\$\\{minSdkVersion\\}", metaJson.getMinSdk().toString());
+        currentFileRead = currentFileRead.replaceAll("\\$\\{targetSdkVersion\\}", metaJson.getTargetSdk().toString());
+        currentFileRead = currentFileRead.replaceAll("\\$appname", projectName);
+      } catch (Exception e) {
+
+      }
+
+      Log.e("Error", currentFileRead);
+
+      StorageUtil.deleteFile(path + file);
+      StorageUtil.createFile(path + file, currentFileRead);
+    }
 
     /*
     StorageUtil.createDirectory(path + "/app/src/main/java/" + formattedPackageName);
