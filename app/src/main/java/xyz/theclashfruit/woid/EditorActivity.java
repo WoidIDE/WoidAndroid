@@ -19,11 +19,19 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 
+import io.github.rosemoe.sora.widget.CodeEditor;
+
 public class EditorActivity extends AppCompatActivity {
 
   private Toolbar toolBar;
   private ViewPager viewPager;
   private TabLayout tabLayout;
+
+  private EditorCodeFragment editorCodeFragment;
+  private EditorLayoutFragment editorLayoutFragment;
+  private EditorFilesFragment editorFilesFragment;
+
+  String currentFile;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +51,28 @@ public class EditorActivity extends AppCompatActivity {
 
     Gson gson = new Gson();
 
+    ProjectMetaGson projectMeta = null;
+
     try {
-      ProjectMetaGson projectMeta = gson.fromJson(StorageUtil.readFile(intent.getStringExtra("projectPath") + "/meta.json"), ProjectMetaGson.class);
+      projectMeta = gson.fromJson(StorageUtil.readFile(intent.getStringExtra("projectPath") + "/meta.json"), ProjectMetaGson.class);
 
       getSupportActionBar().setSubtitle(projectMeta.getProjectName().replaceAll("\\s+",""));
+
+      currentFile = intent.getStringExtra("projectPath") + "/android/app/src/main/java/" + projectMeta.getPackageName().replaceAll("\\.","/") + "/MainActivity.java";
     } catch (IOException e) {
       e.printStackTrace();
     }
 
     viewPager.setAdapter(new FragmentAdapter(getApplicationContext(), getSupportFragmentManager(), 3));
     tabLayout.setupWithViewPager(viewPager);
+
+    viewPager.setOffscreenPageLimit(4);
+
+    editorCodeFragment = (EditorCodeFragment) viewPager.getAdapter().instantiateItem(viewPager, 0);
+    editorLayoutFragment = (EditorLayoutFragment) viewPager.getAdapter().instantiateItem(viewPager, 1);
+    editorFilesFragment = (EditorFilesFragment) viewPager.getAdapter().instantiateItem(viewPager, 2);
+
+    editorCodeFragment.currentFile = intent.getStringExtra("projectPath") + "/android/app/src/main/java/" + projectMeta.getPackageName().replaceAll("\\.","/") + "/MainActivity.java";
 
     viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
       @Override
@@ -89,7 +109,29 @@ public class EditorActivity extends AppCompatActivity {
     return true;
   }
 
-  public class FragmentAdapter extends FragmentStatePagerAdapter {
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    // Handle item selection
+    CharSequence title = item.getTitle();
+    if ("Compile".contentEquals(title)) {
+      WoidUtils.showToast(getApplicationContext(), "Not Yet Implemented.");
+
+      return true;
+    } else if ("Save".contentEquals(title)) {
+      CodeEditor codeEditor = editorCodeFragment.getView().findViewById(R.id.code_editor);
+
+      StorageUtil.createFile(currentFile, codeEditor.getText().toString());
+
+      String last = currentFile.substring(currentFile.lastIndexOf('/') + 1);
+
+      WoidUtils.showToast(getApplicationContext(), "File \"" + last + "\" Saved.");
+
+      return true;
+    }
+    return super.onOptionsItemSelected(item);
+  }
+
+  public static class FragmentAdapter extends FragmentStatePagerAdapter {
     Context context;
     int tabCount;
 

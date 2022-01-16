@@ -19,8 +19,9 @@ import io.github.rosemoe.sora.langs.java.JavaLanguage;
 import io.github.rosemoe.sora.widget.CodeEditor;
 import io.github.rosemoe.sora.widget.EditorColorScheme;
 
-
 public class EditorCodeFragment extends Fragment {
+  String currentFile;
+
   public EditorCodeFragment() {
     // Required empty public constructor
   }
@@ -41,11 +42,8 @@ public class EditorCodeFragment extends Fragment {
     CodeEditor editor = (CodeEditor) viewInflater.findViewById(R.id.code_editor);
     editor.setEditorLanguage(new JavaLanguage());
 
-    Gson gson = new Gson();
-    ProjectMetaGson projectMeta = null;
     try {
-      projectMeta = gson.fromJson(StorageUtil.readFile(getActivity().getIntent().getStringExtra("projectPath") + "/meta.json"), ProjectMetaGson.class);
-      editor.setText(StorageUtil.readFile(getActivity().getIntent().getStringExtra("projectPath") + "/android/app/src/main/java/" + projectMeta.getPackageName().replaceAll("\\.","/") + "/MainActivity.java"));
+      editor.setText(StorageUtil.readFile(currentFile));
     } catch (IOException e) {
       e.printStackTrace();
     }
