@@ -21,6 +21,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
+import xyz.theclashfruit.woid.fragments.AboutFragment;
 import xyz.theclashfruit.woid.fragments.HomeFragment;
 import xyz.theclashfruit.woid.fragments.PluginsFragment;
 import xyz.theclashfruit.woid.fragments.SettingsFragment;
@@ -60,16 +61,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
       fragmentTransaction.replace(R.id.fragmentContainer, homeFragment);
       fragmentTransaction.commit();
-
-      try {
-        String[] files = getAssets().list("AndroidPreGeneratorFiles");
-
-        Gson gson = new GsonBuilder().create();
-        String jsonArray = gson.toJson(files);
-        Log.d("asd", jsonArray);
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
     }
   }
 
@@ -99,6 +90,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         PluginsFragment pluginsFragment = PluginsFragment.newInstance();
 
         drawerFragmentTransaction.replace(R.id.fragmentContainer, pluginsFragment);
+        drawerFragmentTransaction.commit();
+
+        break;
+      case R.id.menuAbout:
+        drawerLayout.closeDrawer(GravityCompat.START);
+        drawerLayoutNavView.setCheckedItem(R.id.menuAbout);
+        getSupportActionBar().setSubtitle("About");
+
+        AboutFragment aboutFragment = new AboutFragment();
+
+        drawerFragmentTransaction.replace(R.id.fragmentContainer, aboutFragment);
         drawerFragmentTransaction.commit();
 
         break;

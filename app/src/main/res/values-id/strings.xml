@@ -1,0 +1,35 @@
+<resources>
+    <!-- Projects Strings -->
+    <string name="create_project">Buat Projek</string>
+    <string name="new_project">Projek Baru</string>
+
+    <!-- Project Create Dialog Strings -->
+    <string name="new_project_app_name">Nama Aplikasi</string>
+    <string name="new_project_package_name">Nama Paket</string>
+    <string name="new_project_min_sdk">SDK Minimal</string>
+    <string name="new_project_target_sdk">Target SDK</string>
+
+    <!-- Preference Title Strings -->
+    <string name="preference_title_display">Tampilan</string>
+    <string name="preference_title_git_integration">Integrasi Git</string>
+    <string name="preference_title_settings_sync">Sinkronisasi Pengaturan</string>
+    <string name="preference_title_editor">Editor</string>
+    <string name="preference_title_debug">Debug</string>
+
+    <!-- Preference Strings -->
+    <string name="preference_dark_mode">Mode Gelap</string>
+    <string name="preference_git_integration">Aktifkan Integrasi Git</string>
+    <string name="preference_settings_sync">Aktifkan Sinkronisasi Pengaturan</string>
+    <string name="preference_sync_options">Opsi Sinkronisasi</string>
+    <string name="preference_auto_indentation">Indentasi Otomatis</string>
+    <string name="preference_auto_complete">Pelengkapan Otomatis</string>
+    <string name="preference_line_wrapping">Pembungkus Garis</string>
+    <string name="preference_theme">Tema</string>
+    <string name="preference_crash_app">Crash App</string>
+    <string name="preference_delete_all_projects">Hapus Semua Projek</string>
+
+    <!-- Debug Activity Strings -->
+    <string name="debug_error_title">Terjadi sebuah kesalahan</string>
+    <string name="debug_report">Laporkan</string>
+    <string name="debug_close_app">Tutup Aplikasi</string>
+</resources>

@@ -6,15 +6,23 @@
         android:checkable="true"
         android:checked="true"
         android:icon="@drawable/ic_design_services"
-        android:title="Home" />
+        android:title="@string/drawer_menu_home" />
+
     <item
         android:id="@+id/menuPlugins"
         android:checkable="true"
         android:icon="@drawable/ic_extension"
-        android:title="Plugins" />
+        android:title="@string/drawer_menu_plugins" />
+
+    <item
+        android:id="@+id/menuAbout"
+        android:checkable="true"
+        android:icon="@drawable/ic_info"
+        android:title="@string/drawer_menu_about" />
+
     <item
         android:id="@+id/menuSettings"
         android:checkable="true"
         android:icon="@drawable/ic_settings"
-        android:title="Settings" ></item>
+        android:title="@string/drawer_menu_settings" />
 </menu>
