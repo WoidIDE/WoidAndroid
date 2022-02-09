@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import xyz.theclashfruit.woid.utils.ProjectFileGeneratorUtils;
 import xyz.theclashfruit.woid.utils.StorageUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
     if(!StorageUtil.isDirectoryExists(getFilesDir().getPath() + "/plugins"))
       StorageUtil.createDirectory(getFilesDir().getPath() + "/plugins");
+
+    if(!StorageUtil.isDirectoryExists(getFilesDir().getPath() + "/tools"))
+      StorageUtil.createDirectory(getFilesDir().getPath() + "/tools");
+      ProjectFileGeneratorUtils.unzipFromAssets(this, "tools.zip", getFilesDir().getPath() + "/tools");
 
     SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("xyz.theclashfruit.woid_preferences", Context.MODE_PRIVATE);
 
