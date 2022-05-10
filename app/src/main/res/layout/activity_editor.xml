@@ -25,48 +25,14 @@
           app:popupTheme="@style/WoidTheme.PopupOverlay"
           app:subtitle="project_name - MainActivity.java*"
           app:title="@string/app_name" />
-
-        <com.google.android.material.tabs.TabLayout
-          android:id="@+id/tabLayout"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-
-          android:background="@color/colorPrimary"
-          app:tabGravity="center"
-          app:tabIndicatorColor="@color/colorOnPrimary"
-          app:tabMode="scrollable"
-          app:tabTextColor="@color/colorOnPrimary">
-
-          <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Code" />
-
-          <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Layout" />
-
-          <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Files" />
-        </com.google.android.material.tabs.TabLayout>
       </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
             android:id="@+id/fragmentContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            android:orientation="horizontal">
-
-
-          <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        </LinearLayout>
+            android:orientation="vertical"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
       <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/newProject"
