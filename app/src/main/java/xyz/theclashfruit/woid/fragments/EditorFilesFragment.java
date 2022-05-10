@@ -1,66 +1,91 @@
 package xyz.theclashfruit.woid.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import io.github.rosemoe.sora.langs.java.JavaLanguage;
+import io.github.rosemoe.sora.widget.CodeEditor;
+import xyz.theclashfruit.woid.EditorActivity;
 import xyz.theclashfruit.woid.R;
+import xyz.theclashfruit.woid.other.FileListAdapter;
+import xyz.theclashfruit.woid.other.ProjectListAdapter;
+import xyz.theclashfruit.woid.utils.StorageUtil;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EditorFilesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class EditorFilesFragment extends Fragment {
-
-  // TODO: Rename parameter arguments, choose names that match
-  // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-  private static final String ARG_PARAM1 = "param1";
-  private static final String ARG_PARAM2 = "param2";
-
-  // TODO: Rename and change types of parameters
-  private String mParam1;
-  private String mParam2;
+  public String currentPath;
+  private List<File> folderFileList;
 
   public EditorFilesFragment() {
     // Required empty public constructor
   }
 
-  /**
-   * Use this factory method to create a new instance of
-   * this fragment using the provided parameters.
-   *
-   * @param param1 Parameter 1.
-   * @param param2 Parameter 2.
-   * @return A new instance of fragment EditorFilesFragment.
-   */
-  // TODO: Rename and change types and number of parameters
-  public static EditorFilesFragment newInstance(String param1, String param2) {
-    EditorFilesFragment fragment = new EditorFilesFragment();
-    Bundle args = new Bundle();
-    args.putString(ARG_PARAM1, param1);
-    args.putString(ARG_PARAM2, param2);
-    fragment.setArguments(args);
-    return fragment;
+  public static EditorFilesFragment newInstance() {
+    return new EditorFilesFragment();
   }
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    if (getArguments() != null) {
-      mParam1 = getArguments().getString(ARG_PARAM1);
-      mParam2 = getArguments().getString(ARG_PARAM2);
-    }
   }
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_editor_files, container, false);
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    View viewInflater = inflater.inflate(R.layout.fragment_editor_files, container, false);
+
+    RecyclerView fileList = viewInflater.findViewById(R.id.fileList);
+
+    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+    ArrayList<String> fileListString = new ArrayList<String>();
+
+    fileListString.add("..");
+
+    FileListAdapter adapter = new FileListAdapter(fileListString, item -> {
+      if(item.equals("..")) {
+        int endIndex = item.lastIndexOf("/");
+        String newPath = item.substring(0, endIndex);
+
+        Log.d("pc", newPath);
+
+        currentPath = newPath;
+
+        folderFileList = StorageUtil.getFiles(currentPath);
+
+        fileListString.removeAll(fileListString);
+
+        for (File file : folderFileList) {
+          fileListString.add(file.getAbsolutePath());
+
+        }
+      }
+    });
+
+    fileList.setHasFixedSize(true);
+    fileList.setLayoutManager(linearLayoutManager);
+    fileList.setAdapter(adapter);
+
+    folderFileList = StorageUtil.getFiles(currentPath);
+
+    for (File file : folderFileList) {
+      fileListString.add(file.getAbsolutePath());
+      adapter.notifyDataSetChanged();
+    }
+
+    return viewInflater;
   }
 }

@@ -30,6 +30,7 @@ public class EditorActivity extends AppCompatActivity {
   private EditorFilesFragment editorFilesFragment;
 
   String currentFile;
+  String currentPath;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +56,17 @@ public class EditorActivity extends AppCompatActivity {
       getSupportActionBar().setSubtitle(projectMeta.getProjectName().replaceAll("\\s+","").concat("- MainActivity.java*"));
 
       currentFile = intent.getStringExtra("projectPath") + "/android/app/src/main/java/" + projectMeta.getPackageName().replaceAll("\\.","/") + "/MainActivity.java";
+      currentPath = intent.getStringExtra("projectPath") + "/android/app/src/main/java/" + projectMeta.getPackageName().replaceAll("\\.","/");
     } catch (IOException e) {
       e.printStackTrace();
     }
 
 
-    editorCodeFragment = new EditorCodeFragment();
+    editorCodeFragment  = new EditorCodeFragment();
     editorFilesFragment = new EditorFilesFragment();
 
-    editorCodeFragment.currentFile = currentFile;
+    editorCodeFragment.currentFile  = currentFile;
+    editorFilesFragment.currentPath = currentPath;
 
     if(savedInstanceState == null) {
       FragmentManager fragmentManager = getSupportFragmentManager();
