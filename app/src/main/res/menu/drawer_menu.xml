@@ -9,6 +9,11 @@
         android:title="@string/drawer_menu_home" />
 
     <item
+        android:id="@+id/menuTools"
+        android:checkable="true"
+        android:icon="@drawable/ic_tools"
+        android:title="Tools" />
+    <item
         android:id="@+id/menuPlugins"
         android:checkable="true"
         android:icon="@drawable/ic_extension"

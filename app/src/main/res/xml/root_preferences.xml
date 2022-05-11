@@ -1,62 +1,62 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto">
-  <PreferenceCategory android:title="@string/preference_title_display">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/preference_title_display">
 
-    <SwitchPreference
-      android:defaultValue="false"
-      android:key="dark_mode"
-      android:title="@string/preference_dark_mode" />
-  </PreferenceCategory>
-  <PreferenceCategory android:title="@string/preference_title_git_integration">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="dark_mode"
+            android:title="@string/preference_dark_mode" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preference_title_git_integration">
 
-    <SwitchPreference
-      android:defaultValue="false"
-      android:key="switch_preference_1"
-      android:title="@string/preference_git_integration" />
-  </PreferenceCategory>
-  <PreferenceCategory android:title="@string/preference_title_settings_sync">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_preference_1"
+            android:title="@string/preference_git_integration" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preference_title_settings_sync">
 
-    <SwitchPreference
-      android:defaultValue="false"
-      android:key="switch_preference_2"
-      android:title="@string/preference_settings_sync" />
-    <MultiSelectListPreference
-      android:entries="@array/settings_sync"
-      android:entryValues="@array/settings_sync"
-      android:key="multi_select_list_preference_1"
-      android:title="@string/preference_sync_options" />
-  </PreferenceCategory>
-  <PreferenceCategory android:title="@string/preference_title_editor">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_preference_2"
+            android:title="@string/preference_settings_sync" />
+        <MultiSelectListPreference
+            android:entries="@array/settings_sync"
+            android:entryValues="@array/settings_sync"
+            android:key="multi_select_list_preference_1"
+            android:title="@string/preference_sync_options" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preference_title_editor">
 
-    <SwitchPreference
-      android:defaultValue="true"
-      android:key="auto_indentation"
-      android:title="@string/preference_auto_indentation" />
-    <SwitchPreference
-      android:defaultValue="true"
-      android:key="auto_complete"
-      android:title="@string/preference_auto_complete" />
-    <SwitchPreference
-      android:defaultValue="false"
-      android:key="line_wrapping"
-      android:title="@string/preference_line_wrapping" />
-    <ListPreference
-      android:defaultValue="1"
-      android:entries="@array/editor_themes"
-      android:entryValues="@array/editor_themes"
-      android:key="list_preference_1"
-      android:title="@string/preference_theme" />
-  </PreferenceCategory>
-  <PreferenceCategory android:title="@string/preference_title_debug">
-    <Preference
-      android:key="app_crash"
-      android:title="@string/preference_crash_app" />
-    <Preference
-      android:key="projects_delete"
-      android:title="@string/preference_delete_all_projects" />
-    <Preference
-      android:key="build_name"
-      android:title="Build"
-      android:summary="@string/app_build_name" />
-  </PreferenceCategory>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="auto_indentation"
+            android:title="@string/preference_auto_indentation" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="auto_complete"
+            android:title="@string/preference_auto_complete" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="line_wrapping"
+            android:title="@string/preference_line_wrapping" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/editor_themes"
+            android:entryValues="@array/editor_themes"
+            android:key="list_preference_1"
+            android:title="@string/preference_theme" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preference_title_debug">
+        <Preference
+            android:key="app_crash"
+            android:title="@string/preference_crash_app" />
+        <Preference
+            android:key="projects_delete"
+            android:title="@string/preference_delete_all_projects" />
+        <Preference
+            android:key="build_name"
+            android:summary="@string/app_build_name"
+            android:title="Build" />
+    </PreferenceCategory>
 </PreferenceScreen>

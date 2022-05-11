@@ -25,6 +25,7 @@ import xyz.theclashfruit.woid.fragments.AboutFragment;
 import xyz.theclashfruit.woid.fragments.HomeFragment;
 import xyz.theclashfruit.woid.fragments.PluginsFragment;
 import xyz.theclashfruit.woid.fragments.SettingsFragment;
+import xyz.theclashfruit.woid.fragments.ToolsFragment;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -82,12 +83,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawerFragmentTransaction.commit();
 
         break;
+      case R.id.menuTools:
+        drawerLayout.closeDrawer(GravityCompat.START);
+        drawerLayoutNavView.setCheckedItem(R.id.menuTools);
+        getSupportActionBar().setSubtitle("Tools");
+
+        ToolsFragment toolsFragment = new ToolsFragment();
+
+        drawerFragmentTransaction.replace(R.id.fragmentContainer, toolsFragment);
+        drawerFragmentTransaction.commit();
+
+        break;
       case R.id.menuPlugins:
         drawerLayout.closeDrawer(GravityCompat.START);
         drawerLayoutNavView.setCheckedItem(R.id.menuPlugins);
         getSupportActionBar().setSubtitle("Plugins");
 
-        PluginsFragment pluginsFragment = PluginsFragment.newInstance();
+        PluginsFragment pluginsFragment = new PluginsFragment();
 
         drawerFragmentTransaction.replace(R.id.fragmentContainer, pluginsFragment);
         drawerFragmentTransaction.commit();

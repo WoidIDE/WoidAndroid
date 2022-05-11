@@ -82,6 +82,7 @@ public class HomeFragment extends Fragment {
     newProjectFab.setOnClickListener(v -> {
       AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
+      builder.setTitle("Create Project");
       builder.setView(dialogViewInflater).setPositiveButton(R.string.create_project, (dialog, which) -> {
         WoidUtils.showToast(getActivity(), "Creating...");
 

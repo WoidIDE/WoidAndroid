@@ -1,0 +1,25 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="General">
+
+        <Preference
+            android:defaultValue="false"
+            android:title="Sign APK" />
+
+        <Preference
+            android:defaultValue="false"
+            android:title="Generate Key Store" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Git">
+
+        <EditTextPreference
+            android:defaultValue="true"
+            android:key="git_srv"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Git Server"
+            app:defaultValue="false" />
+    </PreferenceCategory>
+</PreferenceScreen>
