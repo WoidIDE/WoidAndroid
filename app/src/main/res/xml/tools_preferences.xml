@@ -20,6 +20,9 @@
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:title="Git Server"
-            app:defaultValue="false" />
+            app:defaultValue="gitea.theclashfruit.me" />
+
+        <Preference
+            android:title="Clone" />
     </PreferenceCategory>
 </PreferenceScreen>
